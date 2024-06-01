@@ -1,8 +1,7 @@
-# 문자열 10개씩 wrapping하기
-import textwrap
-
-def wrap_text():
+def print_in_chunks():
     word = input() 
-    print('\n'.join(textwrap.wrap(word, 10)))
+    chunks = [word[i:i+10] for i in range(0, len(word), 10)]
+    for chunk in chunks:
+        print(chunk)
 
-wrap_text()
+print_in_chunks()
