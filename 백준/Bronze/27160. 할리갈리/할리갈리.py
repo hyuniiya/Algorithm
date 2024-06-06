@@ -2,18 +2,17 @@ import sys
 from collections import defaultdict
 
 def ring_bell():
-    input = sys.stdin.readline
-    n = int(input())
+    n = int(sys.stdin.readline())
 
-    fruit_count = defaultdict(int) # {}
+    fruit_count = defaultdict(int)
 
-    for i in range(n):
-        fruit, count = input().split() # ["BANANA" , "2", "PLUM", "4", "BANANA", "3"]
-        fruit_count[fruit] += int(count) # {"BANANA": 5, "PLUM": 4}
+    for _ in range(n):
+        fruit, count = sys.stdin.readline().split()
+        fruit_count[fruit] += int(count)
 
-
-    if  5 in fruit_count.values():
+    if 5 in fruit_count.values():
         print("YES")
     else:
         print("NO")
+
 ring_bell()
