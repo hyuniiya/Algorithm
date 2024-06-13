@@ -1,28 +1,15 @@
-def backtrack(selected, used):
-    if len(selected) == k:
-        number = ''.join(selected)
-        all_combinations.add(number)
-        return
+from itertools import permutations
 
-    for i in range(n):
-        if not used[i]:
-            used[i] = True
-            selected.append(cards[i])
-            backtrack(selected, used)
-            selected.pop()
-            used[i] = False
-
-
-# 입력 받기
 n = int(input())
 k = int(input())
-cards = [input().strip() for _ in range(n)]
+card_list = [input() for _ in range(n)]
 
-# 가능한 모든 조합을 저장할 집합
+# 가능한 모든 조합을 저장, 중복 제거
 all_combinations = set()
 
-# 백트래킹 시작
-backtrack([], [False] * n)
+# permutations 함수를 사용하여 순열 생성
+for perm in permutations(card_list, k):
+    all_combinations.add(''.join(perm))
 
 # 결과 출력
 print(len(all_combinations))
