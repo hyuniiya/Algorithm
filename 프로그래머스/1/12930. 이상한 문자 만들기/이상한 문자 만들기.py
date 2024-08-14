@@ -1,16 +1,14 @@
 def solution(s):
     result = []
-    index = 0  
+    words = s.split(' ')
     
-    for char in s:
-        if char == ' ':
-            result.append(char)
-            index = 0 
-        else:
-            if index % 2 == 0:
-                result.append(char.upper())
+    for word in words:
+        new_word = ''
+        for i, char in enumerate(word):
+            if i % 2 == 0:
+                new_word += char.upper()
             else:
-                result.append(char.lower())
-            index += 1
+                new_word += char.lower()
+        result.append(new_word)
     
-    return ''.join(result)
+    return ' '.join(result)
