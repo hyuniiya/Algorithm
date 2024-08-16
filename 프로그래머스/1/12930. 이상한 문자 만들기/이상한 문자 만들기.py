@@ -1,14 +1,15 @@
 def solution(s):
+    words = s.split(' ')  # 공백 기준으로 단어를 나눔
+    
     result = []
-    words = s.split(' ')
     
     for word in words:
-        new_word = ''
-        for i, char in enumerate(word):
-            if i % 2 == 0:
-                new_word += char.upper()
-            else:
-                new_word += char.lower()
-        result.append(new_word)
+        transformed_word = ''
+        for i in range(len(word)):
+            if i % 2 == 0:  # 짝수 인덱스 -> 대문자
+                transformed_word += word[i].upper()
+            else:           # 홀수 인덱스 -> 소문자
+                transformed_word += word[i].lower()
+        result.append(transformed_word)
     
     return ' '.join(result)
