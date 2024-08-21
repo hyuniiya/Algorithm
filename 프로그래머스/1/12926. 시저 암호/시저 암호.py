@@ -1,13 +1,13 @@
 def solution(s, n):
-    result = []
+    upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    lower = 'abcdefghijklmnopqrstuvwxyz'
+    answer = ''
     
-    for char in s:
-        if char.isupper():  # 대문자 처리
-            new_char = chr((ord(char) - ord('A') + n) % 26 + ord('A'))
-        elif char.islower():  # 소문자 처리
-            new_char = chr((ord(char) - ord('a') + n) % 26 + ord('a'))
+    for char in range(len(s)): 
+        if s[char] == ' ': 
+            answer += ' '
+        elif s[char].isupper():
+            answer += upper[(upper.index(s[char]) + n) % 26]
         else:
-            new_char = char  # 공백 처리
-        result.append(new_char)
-    
-    return ''.join(result)
+            answer += lower[(lower.index(s[char]) + n) % 26]
+    return answer
