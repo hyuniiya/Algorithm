@@ -1,6 +1,12 @@
 def solution(strings, n):
-    strings.sort()
+    answer = []
+    
+    for string in strings:
+        answer.append(string[n] + string)
 
-    strings.sort(key=lambda x: x[n])
+    answer.sort()
 
-    return strings
+    for i in range(len(answer)):
+        answer[i] = answer[i][1:]
+
+    return answer
