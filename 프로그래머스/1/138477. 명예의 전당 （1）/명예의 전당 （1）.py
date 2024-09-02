@@ -8,6 +8,6 @@ def solution(k, score):
         
         if len(rank) > k:
             rank.pop()
-        answer.append(rank[-1])
+        answer.append(min(rank))
         
     return answer
