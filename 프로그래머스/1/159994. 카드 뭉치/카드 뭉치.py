@@ -1,15 +1,13 @@
-from collections import deque
-
 def solution(cards1, cards2, goal):
-    cards1 = deque(cards1)
-    cards2 = deque(cards2)
-    
-    for word in goal:
-        if cards1 and word == cards1[0]:
-            cards1.popleft()
-        elif cards2 and word == cards2[0]:
-            cards2.popleft()
-        else:
-            return 'No'
-    
-    return 'Yes'
+    cards1.append(0)
+    cards2.append(0)
+    for i in goal :
+        if i == cards1[0]:
+            cards1.remove(i)
+        elif i == cards2[0]:
+            cards2.remove(i)
+        else :
+            return "No"
+            break
+
+    return "Yes"
