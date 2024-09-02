@@ -1,15 +1,13 @@
 def solution(k, score):
-    honor_list = []
-    result = []
+    answer = []
+    rank = []
     
-    for s in score:
-        if len(honor_list) < k:
-            honor_list.append(s)
-        else:
-            if s > min(honor_list):
-                honor_list.remove(min(honor_list))
-                honor_list.append(s)
+    for i in score:
+        rank.append(i)
+        rank = sorted(rank,reverse=True)
         
-        result.append(min(honor_list))
-    
-    return result
+        if len(rank) > k:
+            rank.pop()
+        answer.append(rank[-1])
+        
+    return answer
