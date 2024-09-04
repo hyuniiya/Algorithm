@@ -1,13 +1,13 @@
 def solution(cards1, cards2, goal):
-    cards1.append(0)
-    cards2.append(0)
-    for i in goal :
-        if i == cards1[0]:
-            cards1.remove(i)
-        elif i == cards2[0]:
-            cards2.remove(i)
-        else :
+    cards1 = cards1[:]
+    cards2 = cards2[:]
+    
+    for word in goal:
+        if cards1 and word == cards1[0]:
+            cards1.pop(0) 
+        elif cards2 and word == cards2[0]:
+            cards2.pop(0)  
+        else:
             return "No"
-            break
-
+    
     return "Yes"
