@@ -1,12 +1,9 @@
 def solution(k, m, score):
-    score.sort(reverse=True)
+    score.sort()
     
     total_profit = 0
-    
-    for i in range(0, len(score), m):
-        if i + m > len(score):
-            break
-        p = score[i + m - 1]
-        total_profit += p * m
+
+    for start_index in range(len(score) - m, -1, -m):
+        total_profit += score[start_index] * m
     
     return total_profit
