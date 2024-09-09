@@ -1,23 +1,14 @@
-import itertools
-import math
+from itertools import combinations
 
-# 소수 판별 함수 (제곱근까지만 확인)
-def prime(n):
-    if n < 2:
-        return 0
-    for i in range(2, int(math.sqrt(n)) + 1):
+def is_prime(n):
+    for i in range(2, int(n**0.5) + 1):
         if n % i == 0:
-            return 0
-    return 1
+            return False
+    return True
 
 def solution(nums):
-    answer = 0
-    combi = itertools.combinations(nums, 3)
-    prime_cache = {}  
-
-    for comb in combi:
-        if sum(comb) not in prime_cache:
-            prime_cache[sum(comb)] = prime(sum(comb))
-        answer += prime_cache[sum(comb)]
-    
-    return answer
+    count = 0
+    for comb in combinations(nums, 3):
+        if is_prime(sum(comb)):
+            count += 1
+    return count
