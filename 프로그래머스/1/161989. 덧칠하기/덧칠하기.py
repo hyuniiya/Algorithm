@@ -1,10 +1,19 @@
 def solution(n, m, section):
-    count = 0
-    current_position = 0
-    
+    intervals = []
     for s in section:
-        if s > current_position:
+        if not intervals or s > intervals[-1][1]:
+            intervals.append([s, s])
+        else:
+            intervals[-1][1] = s
+    
+    count = 0
+    painted_until = 0
+    for start, end in intervals:
+        if start > painted_until:
             count += 1
-            current_position = s + m - 1
-            
+            painted_until = min(start + m - 1, n)
+        while end > painted_until:
+            count += 1
+            painted_until = min(painted_until + m, n)
+    
     return count
