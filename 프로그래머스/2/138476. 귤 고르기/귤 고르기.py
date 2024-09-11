@@ -3,11 +3,11 @@ from collections import Counter
 
 def solution(k, tangerine):
     answer = 0
-    dic = Counter(tangerine)
+    size_counts = Counter(tangerine)
 
-    for i in dic.most_common():
+    for size, count in size_counts.most_common():
         answer += 1
-        k -= i[1]
+        k -= count
         if k <= 0:
             break
 
