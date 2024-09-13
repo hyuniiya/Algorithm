@@ -1,12 +1,17 @@
+from collections import deque
+
 def solution(elements):
     n = len(elements)
-
-    extended = elements + elements
+    result = set()
     
-    sums = set()
+    dq = deque(elements)
     
-    for start in range(n):
-        for length in range(1, n + 1):
-            sums.add(sum(extended[start:start + length]))
+    for _ in range(n):
+        current_sum = 0
+        for i in range(n):
+            current_sum += dq[i]
+            result.add(current_sum)
+        
+        dq.rotate(-1)
     
-    return len(sums)
+    return len(result)
