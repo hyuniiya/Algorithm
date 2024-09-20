@@ -1,5 +1,5 @@
 def solution(arr1, arr2):
-    result = [] 
+    answer = [] 
 
     for row in arr1:
         new_row = []
@@ -8,6 +8,6 @@ def solution(arr1, arr2):
             for a, b in zip(row, col):
                 sum_value += a * b
             new_row.append(sum_value)
-        result.append(new_row)
+        answer.append(new_row)
 
-    return result
+    return answer
