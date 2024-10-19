@@ -1,27 +1,25 @@
-from collections import deque
-
 def solution(maps):
     n, m = len(maps), len(maps[0])
     
-    dx = [-1, 1, 0, 0]
-    dy = [0, 0, -1, 1]
+    current_positions = [(0, 0)]
     
-    queue = deque([(0, 0, 1)])
+    steps = 0
     
-    visited = [[False] * m for _ in range(n)]
-    visited[0][0] = True
-    
-    while queue:
-        x, y, dist = queue.popleft()
+    while current_positions:
+        steps += 1
+        next_positions = []
         
-        if x == n - 1 and y == m - 1:
-            return dist
-        
-        for i in range(4):
-            nx, ny = x + dx[i], y + dy[i]
+        for x, y in current_positions:
+            if x == n - 1 and y == m - 1:
+                return steps
             
-            if 0 <= nx < n and 0 <= ny < m and maps[nx][ny] == 1 and not visited[nx][ny]:
-                visited[nx][ny] = True
-                queue.append((nx, ny, dist + 1))
+            for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                nx, ny = x + dx, y + dy
+                
+                if 0 <= nx < n and 0 <= ny < m and maps[nx][ny] == 1:
+                    next_positions.append((nx, ny))
+                    maps[nx][ny] = 0
+        
+        current_positions = next_positions
     
     return -1
