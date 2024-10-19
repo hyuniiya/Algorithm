@@ -1,5 +1,5 @@
 def solution(maps):
-    n, m = len(maps), len(maps[0])
+    rows, cols = len(maps), len(maps[0])
     
     current_positions = [(0, 0)]
     
@@ -10,15 +10,15 @@ def solution(maps):
         next_positions = []
         
         for x, y in current_positions:
-            if x == n - 1 and y == m - 1:
+            if x == rows - 1 and y == cols - 1:
                 return steps
             
             for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-                nx, ny = x + dx, y + dy
+                new_x, new_y = x + dx, y + dy
                 
-                if 0 <= nx < n and 0 <= ny < m and maps[nx][ny] == 1:
-                    next_positions.append((nx, ny))
-                    maps[nx][ny] = 0
+                if 0 <= new_x < rows and 0 <= new_y < cols and maps[new_x][new_y] == 1:
+                    next_positions.append((new_x, new_y))
+                    maps[new_x][new_y] = 0
         
         current_positions = next_positions
     
