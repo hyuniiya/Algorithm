@@ -1,10 +1,8 @@
 def solution(land):
-    for row in range(1, len(land)):
-        prev_row = land[row-1]
-        curr_row = land[row]
-        
-        for col in range(4):
-            other_cols = [prev_row[i] for i in range(4) if i != col]
-            curr_row[col] += max(other_cols)
+    for i in range(1, len(land)):
+        land[i][0] += max(land[i - 1][1], land[i - 1][2], land[i - 1][3])
+        land[i][1] += max(land[i - 1][0], land[i - 1][2], land[i - 1][3])
+        land[i][2] += max(land[i - 1][0], land[i - 1][1], land[i - 1][3])
+        land[i][3] += max(land[i - 1][0], land[i - 1][1], land[i - 1][2])
     
     return max(land[-1])
