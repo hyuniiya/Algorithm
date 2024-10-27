@@ -1,12 +1,11 @@
 def solution(msg):
-    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     dic = {}
     for i in range(1, 27):
         dic[chr(i + 64)] = i
     
     answer = []
-    w = ""
-    index = 27
+    w = ''
+    last_index = 27
     
     for c in msg:
         wc = w + c
@@ -14,8 +13,8 @@ def solution(msg):
             w = wc
         else:
             answer.append(dic[w])
-            dic[wc] = index
-            index += 1
+            dic[wc] = last_index
+            last_index += 1
             w = c
     
     if w:
